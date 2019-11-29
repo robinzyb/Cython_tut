@@ -1,0 +1,5 @@
+from distutils.core import setup
+from Cython.Build import cythonize
+
+setup(name='Intgeration Function',
+        ext_modules=cythonize("func.pyx"))
