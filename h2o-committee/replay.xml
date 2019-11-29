@@ -1,0 +1,26 @@
+<simulation verbosity='high'>
+  <output prefix='single-point'>
+    <properties filename='out' stride='1' >  [ potential ] </properties>
+    <trajectory filename='pos' stride='1'> positions </trajectory>
+    <trajectory filename='frc' stride='1'> forces </trajectory>
+    <checkpoint stride='100'/>
+  </output>
+  <total_steps>1500000</total_steps>
+  <prng>
+    <seed>31415</seed>
+  </prng>
+  <ffsocket name='lammps' mode='unix'>
+    <address>replay</address>
+  </ffsocket>
+  <system>
+    <initialize nbeads='1'>
+      <file mode='pdb'> init.pdb </file>
+    </initialize>
+    <forces>
+      <force forcefield='lammps'> </force>
+    </forces>
+    <motion mode='replay'>
+      <file mode='xyz'> conversion.xyz </file>
+    </motion>
+  </system>
+</simulation>
